@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,34 +10,4 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-int	ft_atoi(char *str)
-{
-	int	i;
-	int	m;
-	int	res;
-
-	res = 0;
-	m = 1;
-	i = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
-		i++;
-	if (str[i] && (str[i] == '+' || str[i] == '-'))
-	{
-		if (str[i] == '-')
-			m = m * -1;
-		i++;
-	}
-	while (str[i] && str[i] >= 48 && str[i] <= 57)
-	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
-	}
-	return (res * m);
-}
-
-/*int main(void){
-	char *str = "   +--+-1234ab2";
-	printf("%d", ft_atoi(str));
-}*/
+char *ft_strmapi(char const *s, char (*f)(unsigned int, char));

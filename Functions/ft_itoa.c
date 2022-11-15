@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,32 +12,53 @@
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	count_digit(int n)
 {
-	int	i;
-	int	m;
-	int	res;
+	int	len;
 
-	res = 0;
-	m = 1;
-	i = 0;
-	while ((str[i] >= '\t' && str[i] <= '\r') || str[i] == ' ')
-		i++;
-	if (str[i] && (str[i] == '+' || str[i] == '-'))
+	len = 0;
+	if (n == 0)
+		len++;
+	if (n < 0)
+		len++;
+	while (n != 0)
 	{
-		if (str[i] == '-')
-			m = m * -1;
-		i++;
+		n = n / 10;
+		len++;
 	}
-	while (str[i] && str[i] >= 48 && str[i] <= 57)
-	{
-		res = (str[i] - '0') + (res * 10);
-		i++;
-	}
-	return (res * m);
+	return (len);
 }
 
-/*int main(void){
-	char *str = "   +--+-1234ab2";
-	printf("%d", ft_atoi(str));
+char	*ft_itoa(int n)
+{
+	char	*s;
+	int		i;
+	int		len;
+
+	len = count_digit(n);
+	s = malloc(sizeof(char *) * (len + 1));
+	if (!s)
+		return (0);
+	if (n < 0)
+	{
+		s[0] = '-';
+		i = -n;
+	}
+	else
+		i = n;
+	s[len] = '\0';
+	while (i)
+	{
+		s[len - 1] = i % 10 + '0';
+		i = i / 10;
+		len--;
+	}
+	return (s);
+}
+
+/*int main(){
+	int n = ;
+
+	printf("%s\n", ft_itoa(n));
+	return 0;
 }*/
