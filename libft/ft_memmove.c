@@ -12,40 +12,53 @@
 
 #include "libft.h"
 
-char	*ft_memmove(void *dest, const void *src, size_t n)
+unsigned char	*src_dest(unsigned char *d, unsigned char *s, size_t n)
 {
-	char			*d;
-	const char		*s;
-	char			*t;
-	unsigned int	i;
+	size_t	i;
 
-	d = dest;
-	s = src;
 	i = 0;
-	t = malloc(sizeof(t));
-	if (dest == src)
-		return (0);
-	while (n > i)
+	while (i < n)
 	{
-		*(t + i) = *(s + i);
+		d[i] = s[i];
 		i++;
 	}
+	return (d);
+}
+
+void	*ft_memmove(void *dest, const void *src, size_t n)
+{
+	size_t			i;
+	unsigned char	*s;
+	unsigned char	*d;
+
+	s = (unsigned char *)src;
 	i = 0;
-	while (n > i)
+	d = (unsigned char *)dest;
+	if (!dest && !src)
+		return (0);
+	if (src >= dest)
 	{
-		*d++ = *t++;
-		i++;
+		src_dest(d, s, n);
+	}
+	else
+	{
+		i = n;
+		while (i)
+		{
+			i--;
+			d[i] = s[i];
+		}
 	}
 	return (dest);
 }
 
-/*int main () {
-   char dest[] = "oldstring";
-   const char src[]  = "newstring";
+/*int main (){
+	char dest[] = "oldstring";
+   	const char src[]  = "newstring";
 
-   printf("Before memmove dest = %s\n", dest);
-   ft_memmove(dest, src, 9);
-   printf("After memmove dest = %s\n", dest);
+	printf("Before memmove dest = %s\n", dest);
+   	ft_memmove(dest, src, 9);
+   	printf("After memmove dest = %s\n", dest);
 
-   return(0);
+  	return(0);
 }*/

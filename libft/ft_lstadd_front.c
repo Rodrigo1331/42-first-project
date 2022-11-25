@@ -6,7 +6,7 @@
 /*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 21:11:44 by rcruz-an          #+#    #+#             */
-/*   Updated: 2022/11/22 16:52:33 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2022/11/23 10:50:29 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,4 +17,3 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	new->next = *lst;
 	*lst = new;
 }
-

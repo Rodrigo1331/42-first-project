@@ -3,34 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/30 15:19:56 by rcruz-an          #+#    #+#             */
-/*   Updated: 2022/08/30 15:28:30 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2022/11/23 15:35:16 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_tolower(char *str)
+int	ft_tolower(int c)
 {
-	int	i;
-
-	i = 0;
-	while (str[i] != 0)
+	if (c > 64 && c < 91)
 	{
-		if (str[i] > 64 && str[i] < 91)
-		{
-			str[i] = str[i] + 32;
-		}
-		i++;
+		c = c + 32;
 	}
-	return (str);
+	return (c);
 }
 
-/*int main(void)
+/*int	main(void)
 {
-	char s[] = "Honor Among Thieves";
-	printf("%s", ft_tolower(s));
+	int c = 90;
+	printf("%d", ft_tolower(c));
 	return (0);
 }*/
