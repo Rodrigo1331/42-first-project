@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 21:11:44 by rcruz-an          #+#    #+#             */
-/*   Updated: 2022/11/15 10:31:48 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:01:23 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static int	ft_charsplit(char *s, char c, int j)
 	len = 0;
 	while (len < j && s[len])
 	{
-		if (s[len] != c && len < j && s[len])
+		if (s[len] != c && len < j)
 		{
-			while (s[len] != c && len < j && s[len])
+			while (s[len] != c && len < j)
 				len++;
 			i++;
 		}
-		while (s[len] == c && len < j && s[len])
+		while (s[len] == c && len < j)
 			len++;
 	}
 	return (i);
@@ -42,8 +42,8 @@ static char	**ft_tab(char **tab, const char *s, int len, char c)
 	i = 0;
 	while (len > 0 && *s)
 	{
-		tab[i] = (char *)malloc(sizeof(char) * (len + 1));
-		while (*s != c && len > 0)
+		tab[i] = malloc(sizeof(char) * (len + 1));
+		while (*s != c && len > 0 && *s != '\0')
 		{
 			tab[i][letter++] = (const char)*s;
 			len--;
@@ -55,7 +55,6 @@ static char	**ft_tab(char **tab, const char *s, int len, char c)
 		letter = 0;
 		i++;
 	}
-	tab[i] = (char *)malloc(sizeof(char));
 	tab[i] = NULL;
 	return (tab);
 }
@@ -66,12 +65,14 @@ char	**ft_split(char const *s, char c)
 	int		i;
 	char	**tab;
 
+	if (s == 0)
+		return (0);
 	len = 0;
 	len = ft_strlen((char *)s);
 	i = ft_charsplit((char *)s, c, len);
-	tab = (char **)malloc(sizeof(char *) * (i + 1));
-	if (tab == NULL)
-		return (NULL);
+	tab = malloc(sizeof(char *) * (i + 1));
+	if (tab == 0)
+		return (0);
 	tab[0] = NULL;
 	if (!s || !c || !len)
 		return (tab);
@@ -81,10 +82,15 @@ char	**ft_split(char const *s, char c)
 	return (tab);
 }
 
-/*int main(){
-	char const* s = "Banana andante";
-	char c = 'a';
-
-	printf("%p\n", ft_split(s, c));
-	return (0);
-}*/
+/*int main()
+{
+	char *s = "                          olol";
+	char **result = ft_split(s, ' ');
+	int i = 0;
+	while (result[i])
+	{
+		printf("result[%d] = \'%s\'\n", i, result[i]);
+		i++;
+	}
+	printf("words[%d]\n", i);
+} */

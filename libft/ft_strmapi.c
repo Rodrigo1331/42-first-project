@@ -6,7 +6,7 @@
 /*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 21:11:44 by rcruz-an          #+#    #+#             */
-/*   Updated: 2022/11/25 12:50:08 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2022/11/28 10:00:19 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	i = 0;
 	if (!s || !f)
 		return (0);
-	s2 = malloc(sizeof(char *) * (ft_strlen(s) + 1));
+	s2 = malloc(sizeof(char) * (ft_strlen(s) + 1));
 	if (!s2)
 		return (0);
 	while (s[i])

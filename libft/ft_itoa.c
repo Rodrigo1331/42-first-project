@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 21:11:44 by rcruz-an          #+#    #+#             */
-/*   Updated: 2022/11/05 10:56:22 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2022/11/28 13:01:32 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,18 @@
 
 int	count_digit(int n)
 {
-	int	len;
+	long int		num;
+	unsigned int	len;
 
+	num = n;
 	len = 0;
-	if (n == 0)
+	if (num == 0)
 		len++;
-	if (n < 0)
+	if (num < 0)
 		len++;
-	while (n != 0)
+	while (num != 0)
 	{
-		n = n / 10;
+		num = num / 10;
 		len++;
 	}
 	return (len);
@@ -31,21 +33,22 @@ int	count_digit(int n)
 
 char	*ft_itoa(int n)
 {
-	char	*s;
-	int		i;
-	int		len;
+	char				*s;
+	unsigned int		i;
+	unsigned int		len;
 
 	len = count_digit(n);
-	s = malloc(sizeof(char *) * (len + 1));
+	s = malloc(sizeof(char) * (len + 1));
+	i = n;
 	if (!s)
 		return (0);
 	if (n < 0)
 	{
 		s[0] = '-';
-		i = -n;
+		i = -i;
 	}
-	else
-		i = n;
+	if (i == 0)
+		s[0] = '0';
 	s[len] = '\0';
 	while (i)
 	{
@@ -57,7 +60,7 @@ char	*ft_itoa(int n)
 }
 
 /*int main(){
-	int n = ;
+	int n = 0;
 
 	printf("%s\n", ft_itoa(n));
 	return 0;
