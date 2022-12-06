@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_srchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,29 +12,29 @@
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *str, int n)
+char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
 	int		len;
-	char	*s;
+	char	*s2;
 
-	s = (char *) str;
-	len = ft_strlen(s);
+	s2 = (char *) s;
+	len = ft_strlen(s2);
 	i = len - 1;
-	if (n == '\0')
-		return (&s[len]);
+	if (c == '\0')
+		return (&s2[len]);
 	while (i >= 0)
 	{
-		if (s[i] == n)
-			return (&s[i]);
+		if (s2[i] == c)
+			return (&s2[i]);
 		i--;
 	}
 	return (0);
 }
 
 /*int main (){
-	const char *str = "Hello There!";
-	int n = 101;
+	const char *s = "Hello There!";
+	int c = 101;
 
-	printf("%s\n", ft_strrchr(str, n));
+	printf("%s2\c", ft_srchr(s, c));
 }*/

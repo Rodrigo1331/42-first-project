@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/31 11:47:22 by rcruz-an          #+#    #+#             */
-/*   Updated: 2022/09/02 09:13:15 by rcruz-an         ###   ########.fr       */
+/*   Updated: 2022/12/06 12:48:10 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *dest, char *src, unsigned int size)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -27,19 +27,19 @@ size_t	ft_strlcpy(char *dest, char *src, unsigned int size)
 	{
 		while (src[j] != '\0' && j < (size - 1))
 		{
-			dest[j] = src[j];
+			dst[j] = src[j];
 			j++;
 		}
-		dest[j] = '\0';
+		dst[j] = '\0';
 	}
 	return (i);
 }
 
 /*int main(void)
 {
-	char dest[] = "";
+	char dst[] = "";
 	char src[] = "random string1";
 
-	printf("%d", ft_strlcpy(dest, src, 0));
+	printf("%d", ft_strlcpy(dst, src, 0));
 	return 0;
 }*/

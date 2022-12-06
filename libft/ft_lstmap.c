@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rcruz-an <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: rcruz-an <rcruz-an@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 21:11:44 by rcruz-an          #+#    #+#             */
-/*   Updated: 2022/11/05 10:56:22 by rcruz-an         ###   ########.fr       */
+/*   Created: 2022/11/23 12:42:19 by rcruz-an          #+#    #+#             */
+/*   Updated: 2022/12/02 15:42:57 by rcruz-an         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,25 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void*), void (*del)(void*))
 {
-	t_list *nl;
-	
+	t_list	*nl;
+	t_list	*nl2;
+
 	if (!lst)
 		return (NULL);
 	nl = ft_lstnew(f(lst->content));
-	if (!nl)s
+	if (!nl)
 		return (NULL);
-	while
+	nl2 = nl;
+	while (lst->next)
 	{
 		lst = lst->next;
 		nl->next = ft_lstnew(f(lst->content));
 		if (!nl->next)
 		{
-			ft_lstclear(nl, del)); //not sure if it deletes the whole list
+			ft_lstclear(&nl2, del);
 			return (NULL);
 		}
-		nl = n1->next;
+		nl = nl->next;
 	}
-	free();
-	return (nl)
+	return (nl2);
 }
